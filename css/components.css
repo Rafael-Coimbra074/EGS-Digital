@@ -836,6 +836,8 @@
 
 /* Inputs >= 16px (1rem) to prevent iOS auto-zoom per rules.md */
 .form-control {
+  width: 100%;
+  max-width: 100%;
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
@@ -845,6 +847,12 @@
   font-size: 1rem;
   min-height: 44px;
   transition: border-color var(--transition-fast);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 96px;
+  max-height: 280px;
 }
 
 .form-control:focus {

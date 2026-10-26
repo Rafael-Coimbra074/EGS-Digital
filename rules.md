@@ -32,7 +32,8 @@ tags:
 
 ### 1.2. Microinterações e Formulários de Alta Precisão ([[07-web-interface-guidelines]])
 - **OBRIGATÓRIO:**
-  - Todo campo `<input>` deve ter `font-size >= 16px` em dispositivos móveis para evitar zoom automático invasivo do iOS.
+  - Todo campo `<input>`, `<select>` e `<textarea>` deve ter `font-size >= 16px` (`1rem`) em dispositivos móveis para evitar zoom automático invasivo do iOS.
+  - Todo `<textarea>` deve ter largura fixa (`width: 100%; max-width: 100%;`) e `resize: vertical` (com `min-height` e `max-height` definidos) para crescer apenas verticalmente sem jamais quebrar o grid do formulário.
   - Inputs devem estar agrupados em `<form>` e submeter com tecla `Enter`.
   - O clique no `<label>` deve focar o respectivo campo; botões desabilitam após submissão para prevenir cliques repetidos.
   - Toggles e switches devem ter efeito imediato sem necessidade de confirmação.
