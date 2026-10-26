@@ -1,0 +1,12 @@
+{
+  "userIgnoreFilters": [
+    ".git/",
+    "node_modules/",
+    "assets/",
+    "css/",
+    "js/",
+    "projeto-bancada/"
+  ],
+  "alwaysUpdateLinks": true,
+  "showUnsupportedFiles": false
+}

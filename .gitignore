@@ -1,0 +1,19 @@
+# Agentes e Skills locais (pesados / symlinks locais)
+.agents/
+00-CORE-COMPARTILHADO/
+00-CORE-COMPARTILHADO
+
+# Cofre Obsidian local (cache de workspace)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Arquivos brutos temporários
+logo.jfif
+
+# Arquivos de Sistema e Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+.vscode/
+.idea/
