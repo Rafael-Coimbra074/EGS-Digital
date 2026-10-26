@@ -233,8 +233,8 @@
 
 /* Hero Section (x.ai Scale & Monumental Clarity) */
 .hero-section {
-  padding-top: clamp(4.5rem, 8vw, 7rem);
-  padding-bottom: clamp(4.5rem, 8vw, 7rem);
+  padding-top: clamp(3rem, 5.5vw, 4.75rem);
+  padding-bottom: clamp(3.5rem, 6vw, 5.25rem);
   position: relative;
   overflow: hidden;
 }
@@ -286,8 +286,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-xl);
-  margin-top: var(--space-3xl);
-  padding-top: var(--space-xl);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
   border-top: 1px solid var(--border-subtle);
 }
 
@@ -319,6 +319,13 @@
   border-radius: var(--radius-md);
   padding: var(--space-xl);
   box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 993px) {
+  .operations-panel {
+    align-self: start;
+    margin-top: 0.35rem;
+  }
 }
 
 .panel-header {
