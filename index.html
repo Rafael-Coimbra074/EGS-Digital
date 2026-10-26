@@ -33,6 +33,10 @@
         var saved = localStorage.getItem('egs_theme');
         if (saved === 'light' || saved === 'dark') {
           document.documentElement.setAttribute('data-theme', saved);
+          var metaTheme = document.querySelector('meta[name="theme-color"]');
+          if (metaTheme) {
+            metaTheme.setAttribute('content', saved === 'dark' ? '#000000' : '#FAFAFA');
+          }
         }
       } catch (_) {}
     })();
@@ -68,8 +72,8 @@
   <header class="site-header">
     <div class="container nav-container">
       <a href="#inicio" class="brand-logo" aria-label="EGS Digital — Voltar ao início">
-        <img src="assets/logo-dark.png" alt="EGS Digital" class="logo-dark" width="800" height="288">
-        <img src="assets/logo-light.png" alt="EGS Digital" class="logo-light" width="800" height="288">
+        <img src="assets/logo-dark.png" alt="EGS Digital" class="logo-dark" width="800" height="288" decoding="async" fetchpriority="high">
+        <img src="assets/logo-light.png" alt="EGS Digital" class="logo-light" width="800" height="288" decoding="async" fetchpriority="high">
       </a>
 
       <nav id="nav-menu" class="nav-menu" aria-label="Navegação Principal">
@@ -364,12 +368,12 @@
     <section id="seguranca" class="section section-subtle" aria-labelledby="seguranca-heading">
       <div class="container">
         <div class="security-section-box reveal">
-          <div>
+          <div class="security-copy">
             <h2 id="seguranca-heading">Proteção Imutável e Recuperação de Desastres</h2>
-            <p style="margin-top: 0.75rem;">
+            <p class="security-lead">
               Ataques de sequestro de dados exigem arquitetura de contingência imutável. Na EGS Digital, os backups são gravados em sessão única, isolados da rede primária e blindados contra manipulações externas.
             </p>
-            <div style="margin-top: 1.75rem;">
+            <div class="security-cta">
               <a href="#contato" class="btn btn-primary">Solicitar Auditoria Técnica</a>
             </div>
           </div>
@@ -408,49 +412,49 @@
          ========================================================================== -->
     <section id="quemsomos" class="section" aria-labelledby="quemsomos-heading">
       <div class="container">
-        <div class="hero-grid reveal" style="align-items: center;">
-          <div>
+        <div class="hero-grid reveal">
+          <div class="company-copy">
             <h2 id="quemsomos-heading">Experiência Técnica e Presença Sólida em Minas Gerais</h2>
-            <p style="margin-top: 0.75rem; margin-bottom: 1rem;">
+            <p class="company-lead">
               Com sede em Belo Horizonte, a <strong>EGS DIGITAL</strong> estrutura e administra ambientes de tecnologia da informação para empresas que necessitam de estabilidade contínua, governança e respostas técnicas ágeis.
             </p>
-            <p style="margin-bottom: 1.5rem;">
+            <p class="company-sublead">
               Nosso corpo técnico atua em indústrias, empresas de comércio e prestadoras de serviços, estabelecendo rotinas preventivas que evitam interrupções no faturamento e desordem na infraestrutura.
             </p>
-            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 0.65rem 1.15rem; border-radius: var(--radius-sm); font-size: 0.88rem;">
-                <span style="color: var(--text-muted);">Sede:</span> Belo Horizonte — MG
+            <div class="company-badges">
+              <div class="company-badge">
+                <span class="company-badge-label">Sede:</span> Belo Horizonte — MG
               </div>
-              <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 0.65rem 1.15rem; border-radius: var(--radius-sm); font-size: 0.88rem; font-variant-numeric: tabular-nums;">
-                <span style="color: var(--text-muted);">CNPJ:</span> 11.846.893/0001-07
+              <div class="company-badge company-badge-num">
+                <span class="company-badge-label">CNPJ:</span> 11.846.893/0001-07
               </div>
             </div>
           </div>
 
-          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-xl); box-shadow: var(--shadow-sm);">
-            <h3 style="margin-bottom: 1rem;">Pilares Institucionais EGS</h3>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-              <div style="display: flex; gap: 0.75rem;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; color: var(--status-active); flex-shrink: 0; margin-top: 2px;" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <div class="pillars-card">
+            <h3>Pilares Institucionais EGS</h3>
+            <div class="pillars-list">
+              <div class="pillar-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                 <div>
-                  <strong style="color: var(--text-primary); display: block; font-size: 0.95rem;">Atendimento Técnico Especializado</strong>
-                  <span style="font-size: 0.88rem; color: var(--text-muted);">Contato direto com analistas responsáveis pelo seu ambiente, sem intermediários.</span>
+                  <strong>Atendimento Técnico Especializado</strong>
+                  <span>Contato direto com analistas responsáveis pelo seu ambiente, sem intermediários.</span>
                 </div>
               </div>
 
-              <div style="display: flex; gap: 0.75rem;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; color: var(--status-active); flex-shrink: 0; margin-top: 2px;" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <div class="pillar-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                 <div>
-                  <strong style="color: var(--text-primary); display: block; font-size: 0.95rem;">Visão Unificada de TI</strong>
-                  <span style="font-size: 0.88rem; color: var(--text-muted);">Gestão integrada desde o cabeamento e racks até a infraestrutura em nuvem e estações.</span>
+                  <strong>Visão Unificada de TI</strong>
+                  <span>Gestão integrada desde o cabeamento e racks até a infraestrutura em nuvem e estações.</span>
                 </div>
               </div>
 
-              <div style="display: flex; gap: 0.75rem;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; color: var(--status-active); flex-shrink: 0; margin-top: 2px;" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <div class="pillar-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                 <div>
-                  <strong style="color: var(--text-primary); display: block; font-size: 0.95rem;">Ecossistema Conectado</strong>
-                  <span style="font-size: 0.88rem; color: var(--text-muted);">Acesso direto à Central de Chamados e à Loja Corporativa de ativos de tecnologia.</span>
+                  <strong>Ecossistema Conectado</strong>
+                  <span>Acesso direto à Central de Chamados e à Loja Corporativa de ativos de tecnologia.</span>
                 </div>
               </div>
             </div>
@@ -503,7 +507,7 @@
         <div class="contact-grid">
           <div class="reveal">
             <h2 id="contato-heading">Agendamento de Consulta Técnica</h2>
-            <p style="margin-top: 0.75rem;">Entre em contato com nossa equipe técnica para avaliarmos a infraestrutura da sua empresa e definirmos um plano de governança adaptado às suas necessidades.</p>
+            <p class="contact-lead">Entre em contato com nossa equipe técnica para avaliarmos a infraestrutura da sua empresa e definirmos um plano de governança adaptado às suas necessidades.</p>
 
             <div class="contact-meta">
               <div class="contact-meta-item">
@@ -540,35 +544,35 @@
 
           <!-- Formulário -->
           <form id="lead-form" class="contact-form reveal reveal-delay-2">
-            <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Solicitar Avaliação Preliminar</h3>
-            <p style="font-size: 0.88rem; margin-bottom: 0.75rem; color: var(--text-muted);">Preencha os campos abaixo para que nossa equipe técnica analise suas demandas.</p>
+            <h3 class="form-title">Solicitar Avaliação Preliminar</h3>
+            <p class="form-subtitle">Preencha os campos abaixo para que nossa equipe técnica analise suas demandas.</p>
 
             <div class="form-group">
-              <label for="form-name">Nome Completo</label>
-              <input type="text" id="form-name" name="name" autocomplete="name" class="form-control" placeholder="Seu nome" required>
+              <label for="form-name">Nome Completo <span class="label-req" aria-hidden="true">*</span></label>
+              <input type="text" id="form-name" name="name" autocomplete="name" class="form-control" placeholder="Ex: Carlos Mendes" required>
             </div>
 
             <div class="form-group">
-              <label for="form-company">Empresa</label>
-              <input type="text" id="form-company" name="organization" autocomplete="organization" class="form-control" placeholder="Nome da empresa" required>
+              <label for="form-company">Empresa <span class="label-req" aria-hidden="true">*</span></label>
+              <input type="text" id="form-company" name="organization" autocomplete="organization" class="form-control" placeholder="Razão social ou nome fantasia" required>
             </div>
 
             <div class="form-group">
-              <label for="form-email">E-mail Corporativo</label>
-              <input type="email" id="form-email" name="email" autocomplete="email" class="form-control" placeholder="email@empresa.com.br" required>
+              <label for="form-email">E-mail Corporativo <span class="label-req" aria-hidden="true">*</span></label>
+              <input type="email" id="form-email" name="email" autocomplete="email" class="form-control" placeholder="nome@empresa.com.br" required>
             </div>
 
             <div class="form-group">
-              <label for="form-phone">Telefone / WhatsApp</label>
+              <label for="form-phone">Telefone / WhatsApp <span class="label-req" aria-hidden="true">*</span></label>
               <input type="tel" id="form-phone" name="tel" autocomplete="tel" class="form-control" placeholder="(31) 99999-9999" required>
             </div>
 
             <div class="form-group">
-              <label for="form-message">Breve descrição da infraestrutura atual</label>
-              <textarea id="form-message" name="message" class="form-control" rows="3" placeholder="Ex: Necessidade de gestão de estações, servidores e backup contra ransomware..."></textarea>
+              <label for="form-message">Cenário atual da infraestrutura <span class="label-opt">(opcional)</span></label>
+              <textarea id="form-message" name="message" class="form-control" rows="3" placeholder="Ex: 25 computadores, 1 servidor local e necessidade de backup imutável..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem; width: 100%;">
+            <button type="submit" class="btn btn-primary btn-submit-full">
               Enviar Dados para Avaliação
             </button>
           </form>
@@ -584,14 +588,14 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <div style="margin-bottom: 1.25rem;">
-            <img src="assets/logo-dark.png" alt="Logotipo Oficial EGS Digital" class="logo-dark" width="800" height="288">
-            <img src="assets/logo-light.png" alt="Logotipo Oficial EGS Digital" class="logo-light" width="800" height="288">
+          <div class="footer-brand">
+            <img src="assets/logo-dark.png" alt="Logotipo Oficial EGS Digital" class="logo-dark" width="800" height="288" loading="lazy" decoding="async">
+            <img src="assets/logo-light.png" alt="Logotipo Oficial EGS Digital" class="logo-light" width="800" height="288" loading="lazy" decoding="async">
           </div>
-          <p style="font-size: 0.88rem; margin-bottom: 1rem; max-width: 320px; color: var(--text-muted);">
+          <p class="footer-desc">
             Infraestrutura de rede de computadores, gestão de servidores e soluções corporativas em tecnologia da informação.
           </p>
-          <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; font-variant-numeric: tabular-nums;">
+          <div class="footer-legal">
             CNPJ: 11.846.893/0001-07<br>
             Rua Frei Luiz de Souza, 266 — Belo Horizonte / MG
           </div>
@@ -634,7 +638,7 @@
 
       <div class="footer-bottom">
         <div>© 2026 EGS DIGITAL — Todos os direitos reservados.</div>
-        <div style="color: var(--text-muted);">Belo Horizonte / MG — Soluções Corporativas em TI.</div>
+        <div>Belo Horizonte / MG — Soluções Corporativas em TI.</div>
       </div>
     </div>
   </footer>

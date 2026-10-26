@@ -712,6 +712,89 @@
   font-size: 0.88rem;
 }
 
+.security-lead {
+  margin-top: var(--space-sm);
+}
+
+.security-cta {
+  margin-top: 1.75rem;
+}
+
+/* Company & Institutional Pillars */
+.company-lead {
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.company-sublead {
+  margin-bottom: var(--space-lg);
+}
+
+.company-badges {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.company-badge {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 0.65rem 1.15rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  color: var(--text-primary);
+}
+
+.company-badge-num {
+  font-variant-numeric: tabular-nums;
+}
+
+.company-badge-label {
+  color: var(--text-muted);
+}
+
+.pillars-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.pillars-card h3 {
+  margin-bottom: var(--space-md);
+}
+
+.pillars-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.pillar-item {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.pillar-item svg {
+  width: 20px;
+  height: 20px;
+  color: var(--status-active);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pillar-item strong {
+  color: var(--text-primary);
+  display: block;
+  font-size: 0.95rem;
+}
+
+.pillar-item span {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
 /* Partners / Homologated Technologies Grid */
 .partners-grid {
   display: grid;
@@ -768,6 +851,10 @@
   }
 }
 
+.contact-lead {
+  margin-top: var(--space-sm);
+}
+
 .contact-meta {
   display: flex;
   flex-direction: column;
@@ -821,6 +908,17 @@
   gap: var(--space-md);
 }
 
+.form-title {
+  font-size: 1.15rem;
+  margin-bottom: var(--space-2xs);
+}
+
+.form-subtitle {
+  font-size: 0.88rem;
+  margin-bottom: var(--space-sm);
+  color: var(--text-muted);
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -832,6 +930,47 @@
   font-weight: 600;
   color: var(--text-secondary);
   cursor: pointer;
+}
+
+.label-req {
+  color: var(--egs-red-text);
+  margin-left: 2px;
+}
+
+.label-opt {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.btn-submit-full {
+  margin-top: var(--space-xs);
+  width: 100%;
+}
+
+.form-success-state {
+  text-align: center;
+  padding: var(--space-xl) var(--space-xs);
+}
+
+.form-success-state h3 {
+  margin-bottom: var(--space-xs);
+  color: var(--status-active);
+}
+
+.form-success-state p {
+  color: var(--text-muted);
+  max-width: 460px;
+  margin: 0 auto var(--space-lg) auto;
+  font-size: 0.92rem;
+}
+
+.form-success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  max-width: 340px;
+  margin: 0 auto;
 }
 
 /* Inputs >= 16px (1rem) to prevent iOS auto-zoom per rules.md */
@@ -887,6 +1026,24 @@ textarea.form-control {
   }
 }
 
+.footer-brand {
+  margin-bottom: 1.25rem;
+}
+
+.footer-desc {
+  font-size: 0.88rem;
+  margin-bottom: var(--space-md);
+  max-width: 320px;
+  color: var(--text-muted);
+}
+
+.footer-legal {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
 .footer-col h3 {
   font-size: 0.88rem;
   font-weight: 600;
@@ -897,13 +1054,13 @@ textarea.form-control {
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space-2xs);
 }
 
 .footer-links a {
   color: var(--text-muted);
   font-size: 0.85rem;
-  min-height: 36px;
+  min-height: 44px;
   border-radius: var(--radius-xs);
   display: inline-flex;
   align-items: center;
@@ -932,8 +1089,8 @@ textarea.form-control {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  background: #09090B;
-  color: #FAFAFA;
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
   border: 1px solid var(--border-medium);
   width: 48px;
   height: 48px;
@@ -944,12 +1101,6 @@ textarea.form-control {
   box-shadow: var(--shadow-sm);
   z-index: 999;
   transition: transform var(--transition-fast), border-color var(--transition-fast);
-}
-
-[data-theme="light"] .whatsapp-float {
-  background: #FFFFFF;
-  color: #09090B;
-  border-color: var(--border-subtle);
 }
 
 @media (hover: hover) {

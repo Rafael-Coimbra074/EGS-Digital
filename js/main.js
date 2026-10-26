@@ -64,6 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateThemeUI(theme) {
     if (!themeToggle) return;
     const isDark = theme === 'dark';
+    const metaTheme = $('meta[name="theme-color"]');
+    if (metaTheme) {
+      metaTheme.setAttribute('content', isDark ? '#000000' : '#FAFAFA');
+    }
     themeToggle.setAttribute(
       'aria-label',
       isDark ? 'Ativar modo claro' : 'Ativar modo escuro'
@@ -198,7 +202,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', resizeCanvas, { passive: true });
 
+    let isHeroVisible = true;
+    let rafId = null;
+
     function renderCanvas() {
+      if (!isHeroVisible) {
+        rafId = null;
+        return;
+      }
       if (!document.hidden) {
         ctx.clearRect(0, 0, width, height);
         const isDark = root.getAttribute('data-theme') === 'dark';
@@ -225,11 +236,26 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
       }
-      requestAnimationFrame(renderCanvas);
+      rafId = requestAnimationFrame(renderCanvas);
     }
 
     initParticles();
-    renderCanvas();
+    rafId = requestAnimationFrame(renderCanvas);
+
+    if ('IntersectionObserver' in window) {
+      const heroSection = $('#inicio');
+      if (heroSection) {
+        const canvasObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            isHeroVisible = entry.isIntersecting;
+            if (isHeroVisible && rafId === null) {
+              rafId = requestAnimationFrame(renderCanvas);
+            }
+          });
+        });
+        canvasObserver.observe(heroSection);
+      }
+    }
   }
 
   // --------------------------------------------------------------------------
@@ -405,12 +431,12 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         showToast('Solicitação pronta para envio imediato.');
         contactForm.innerHTML = `
-          <div style="text-align: center; padding: 2rem 0.5rem;">
-            <h3 style="margin-bottom: 0.5rem; color: var(--status-active);">Diagnóstico Estruturado</h3>
-            <p style="color: var(--text-muted); max-width: 460px; margin: 0 auto 1.5rem auto; font-size: 0.92rem;">
+          <div class="form-success-state">
+            <h3>Diagnóstico Estruturado</h3>
+            <p>
               Obrigado, <strong>${escapeHTML(name)}</strong> (<strong>${escapeHTML(company)}</strong>). Escolha abaixo o canal de sua preferência para concluir o envio imediato à equipe técnica em Belo Horizonte:
             </p>
-            <div style="display: flex; flex-direction: column; gap: 0.65rem; max-width: 340px; margin: 0 auto;">
+            <div class="form-success-actions">
               <a href="https://wa.me/553130373451?text=${whatsappText}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
                 Enviar Agora via WhatsApp Oficial ↗
               </a>
