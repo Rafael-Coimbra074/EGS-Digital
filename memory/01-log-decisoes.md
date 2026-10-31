@@ -238,5 +238,70 @@ Este documento registra automaticamente o histórico de decisões estratégicas,
   4. **`$impeccable polish`**: Removidos 100% dos atributos `style="..."` inline de [index.html](file:///c:/Users/fael/Desktop/EGS-Digital/index.html) e [js/main.js](file:///c:/Users/fael/Desktop/EGS-Digital/js/main.js), substituídas as cores fixas de `.whatsapp-float` por tokens semânticos (`var(--bg-surface-elevated)` / `var(--text-primary)`) e sincronizada a meta tag `<meta name="theme-color">` dinamicamente entre `#000000` (Dark) e `#FAFAFA` (Light).
 - **Resultado Final do Audit:** **20/20 (Excellent)** e **`[]` (0 avisos / 0 erros)** no detector mecânico.
 
+---
+
+## 📅 2026-10-30 — Evolução de Conteúdo e Engenharia Comercial ("EGS 2.0") + Checkpoint de Rollback (`v1.0-baseline`)
+
+- **Agente:** Antigravity (AGY)
+- **Ponto de Restauração Seguro (Rollback Instantâneo):**
+  - Criada a tag Git **`v1.0-baseline`** apontando para o commit `61a1da5` antes das alterações da EGS 2.0, garantindo retorno imediato de 1 comando (`git checkout v1.0-baseline -- index.html css/ js/`) caso o usuário deseje voltar à versão anterior enxuta.
+- **Intervenção Proativa ([[05-diretriz-pensamento-critico]]):**
+  - Preservada 100% da arquitetura estética minimalista (*x.ai* & *V7 Labs*) e dos tokens CSS, focando a evolução 2.0 no **enriquecimento de conteúdo técnico, tangibilidade comercial e quebra de objeções B2B**.
+- **6 Upgrades Implementados na EGS 2.0:**
+  1. **Painel NOC com Telemetria Tripla (`#inicio`):** Adicionadas métricas técnicas dinâmicas (`RPO / Janela`, `Criptografia / Protocolo`, `Auditoria / SLA`) em cada módulo (`M1` a `M4`) e indicador `< 15m` de triagem crítica no Hero.
+  2. **6 Soluções com Entregáveis + Modal de Ficha Técnica (`#solucoes` + `#spec-modal`):** Cada card agora lista 3 entregáveis concretos e possui o botão `Ver Ficha Técnica →`, abrindo um modal acessível (`role="dialog"`, suporte a `Esc` e retorno de foco) com escopo completo de engenharia, SLA, modelo OPEX e link contextualizado para cotação no WhatsApp.
+  3. **Matriz Comparativa Executiva (`#metodologia`):** Bloco lado a lado contrastando o **Modelo Tradicional ("Quebra-Conserta")** contra a **Governança Proativa EGS Digital (MSP)**.
+  4. **Configurador de Arquitetura 2.0 (`#simulador`):** Adicionado seletor de **Setor de Atuação** (Contabilidade/Jurídico, Indústria/Logística, Clínicas/Saúde, Comércio/Serviços) e painel **Blueprint Recomendado** exibindo SLA, Topologia, Modelo de Contratação e lista dinâmica de entregáveis.
+  5. **Engenharia por Vertical de Negócio em MG (`#setores`):** Nova seção detalhando como a EGS resolve as dores específicas de Escritórios Contábeis/Advocacia (Domínio, Alterdata, LGPD), Indústrias/Galpões (ERP, Wi-Fi de alta densidade, Furukawa), Clínicas/Saúde (WideCloud URA, segregação de rede) e Varejo/Comércio (HaaS, PDV e filiais).
+  6. **FAQ Executivo da Diretoria (`#faq` + Schema `FAQPage` JSON-LD):** Accordion nativo respondendo às 5 principais dúvidas antes da assinatura do contrato (transição sem paradas, TI Co-Gerenciada vs. Full MSP, recuperação de Ransomware, HaaS OPEX vs. CAPEX e atendimento presencial em BH/MG).
+- **Validação Mecânica:** `node -c js/main.js` (0 erros) e `npx impeccable detect index.html --json` (`[]` — 0 avisos / 0 erros).
+- **Refinamento Curatorial (`Distill` + `Animate`):**
+  - Enxugado o excesso de texto visível: removidos os bullets internos dos 6 cards de soluções (devolvendo o respiro minimalista V7 Labs para a vitrine e concentrando os detalhes dentro do Modal de Ficha Técnica), eliminada a seção redundante `#setores` (mantendo o seletor de segmento integrado dentro do Simulador) e enxugado o comparativo TI Comum vs. EGS para 3 pontos diretos.
+  - **Camada de Movimento & Vida Adicionada:**
+    - Modal de Ficha Técnica (`#spec-modal`) com abertura/fechamento animados (`opacity` + `backdrop-filter` + `translateY(20px) scale(0.96)` → `scale(1)`) e entrada em cascata (*stagger*) das métricas e entregáveis, podendo ser aberto clicando em qualquer lugar do card.
+    - Transição suave (`.is-switching` / `.is-updating`) ao alternar as abas do Painel NOC e os filtros do Configurador de Arquitetura.
+    - FAQ Accordion (`#faq`) com animação fluida de altura (`grid-template-rows: 0fr -> 1fr`) e fechamento automático dos demais itens.
+    - Canvas do Hero reagindo suavemente à proximidade do cursor com conexões sutis em vermelho EGS e micro-deslizamento nas setas (`→` / `↗`) e links do menu.
+- **Âncoras Gráficas Vetoriais (SVG) + Seção de Feedbacks B2B (`#clientes`):**
+  1. **Gráfico de Onda de Telemetria no Painel NOC (`.noc-telemetry-viz`):** Curva vetorial SVG (`#noc-wave-line` / `#noc-wave-area`) que altera seu traçado dinamicamente ao alternar entre `M1`, `M2`, `M3` e `M4`.
+  2. **Diagrama Animado de Fluxo de Dados Anti-Ransomware (`.topology-diagram` em `#seguranca`):** Esquema arquitetural mostrando `ORIGEM · ON-PREMISE` ➔ `AES-256 · AIR-GAP` (com feixe contínuo animado em SVG) ➔ `COFRE · ISO 27001 (Bloco Imutável WORM)`.
+  3. **Blueprint Visual de Rack Padronizado EGS (`.rack-schematic` em `#quemsomos`):** Representação gráfica das 4 unidades de infraestrutura (`U01` Borda & Firewall, `U02` Cluster Servidores, `U03` Cofre Imutável, `U04` Sustentação MSP & WideCloud).
+  4. **Seção "Operações Blindadas pela EGS Digital" (`#clientes`):** 3 cards minimalistas de prova social B2B sem clichês visuais (foco em métrica operacional `0 PARADAS EM 3 ANOS`, `99.9% UPTIME NO ERP`, `SLA < 15 MIN NO SUPORTE` + relato executivo por setor).
+- **Auditorias `taste-skill` (`inspect.mjs` real-browser) + `find-skills` (`landing-page-conversion-audit` / `cro` / `visual-qa`):**
+  1. **`[headline-lines]` (Títulos de 4 linhas reduzidos para 2 linhas):** Ajustados `<h1>` (`"Infraestrutura de TI para Operações Críticas"`), `#metodologia-heading` (`"Governança e Implantação"`), `#seguranca-heading` (`"Backup Imutável e Recuperação de Desastres"`) e `#quemsomos-heading` (`"Engenharia de TI Sólida em Minas Gerais"`).
+  2. **`[eyebrow]` (Remoção do kicker enquadrado do Hero):** Removida a pílula `.hero-eyebrow` que quebrava em 2 linhas em `390px` e integrado o contexto de Belo Horizonte/MG diretamente ao lead do Hero.
+  3. **Botão `.btn-spec-trigger` em linha única:** Simplificado para `"Ficha Técnica →"` com `white-space: nowrap; flex-shrink: 0;` para nunca quebrar em 2 linhas nos cards de 3 colunas.
+  4. **Header Mobile (`390px`) desobstruído:** Ocultado `.btn-store` na barra superior em telas `<= 560px` e adicionados links dedicados (`.nav-link-mobile-only`) para `Loja Corporativa ↗` e `HelpDesk (Chamados) ↗` dentro do menu mobile `#nav-menu`.
+  5. **Diagrama `.topology-diagram` full-width (`grid-column: 1 / -1`):** Expandido o diagrama vetorial de Backup Imutável para ocupar toda a largura inferior de `.security-section-box`, eliminando o aperto visual na coluna esquerda.
+  6. **Escala tipográfica e elevação limpa (`[body-size]`, `[small-text]`, `[shadow]`):** Elevado o corpo de `.service-card p` para `1rem` (`16px`), `.service-meta` e `.topo-code` para `0.8125rem` (`13px`) e removidas sombras em repouso de `.operations-panel` e `.pillars-card`.
+- **Descomplicação de Linguagem (Foco no Empresário) + Melhorias de CRO:**
+  1. **Tradução de Jargões de TI para Linguagem Executiva Clara:** Substituídas siglas intimidadoras (*MSP*, *RPO/RTO*, *WORM/Object Lock*, *Air-Gap Lógico*, *HaaS OPEX/CAPEX*, *Site Survey*, *Dual-WAN Failover*) por benefícios diretos do dia a dia (*"Suporte de TI Completo"*, *"Backup Blindado Contra Sequestro"*, *"Duas Internets Automáticas"*, *"Aluguel de Computadores Sem Gastar com Compra"*, *"Atendimento em até 15 min"*), permitindo que qualquer dono de empresa entenda imediatamente o que precisa.
+  2. **Integração Simulador ➔ Formulário (`#sim-fill-form-btn`):** Adicionado botão *"Ou enviar pelo formulário ↓"* no Simulador que rola suavemente até `#contato`, preenche automaticamente o campo de mensagem com o resumo da simulação e foca o campo Nome.
+  3. **Redução de Fricção no Formulário (`#lead-form`):** Mantidos apenas 3 campos rápidos obrigatórios (*Seu Nome*, *Nome da Empresa* e *Telefone / WhatsApp*), tornando *E-mail* e *O que precisa resolver* opcionais.
+  4. **Carrossel em Loop Infinito de 8 Clientes (`#clientes`):** Expandida a seção de feedbacks para **8 empresas de segmentos distintos em MG** (*Contabilidade*, *Logística*, *Saúde*, *Advocacia*, *Metalurgia*, *Varejo*, *Construção Civil* e *Seguros*), cada card contendo:
+     - **Nota de 0 a 5 estrelas** em SVG vetorial + score numérico `5.0` e selo de resultado;
+     - **Relato executivo** claro e objetivo;
+     - **Avatar circular tipo foto de perfil** (`.company-logo-circle`, preparado para monograma ou `<img src="...">` com a logo real da empresa) + nome da empresa e setor ao lado;
+     - **Loop contínuo infinito** via `requestAnimationFrame` + `IntersectionObserver` em [js/main.js](file:///c:/Users/fael/Desktop/EGS-Digital/js/main.js#L836-L892), com pausa automática ao passar o mouse (`mouseenter`) ou tocar no celular (`touchstart`) e máscara suave nas bordas laterais.
+  5. **Hover Padrão Limpo no Botão Fechar do Modal (`.spec-modal-close`) + Indicador Lateral de Seções (`.section-dots-nav`):**
+     - Removida a rotação (`rotate(90deg)`) do ícone `X` em `.spec-modal-close:hover`, mantendo apenas hover padrão limpo de superfície e borda;
+     - Implementada a barra vertical fixa de pontos de seção (`.section-dots-nav`) na lateral esquerda com `IntersectionObserver` (ScrollSpy em tempo real), esfera ativa deslizante (`.section-dots-indicator`) e *tooltip* ao passar o mouse.
+  6. **Refinamento de Contraste e Profundidade no Tema Claro (`[data-theme="light"]`):**
+     - **Sem alterar nada no Tema Escuro**, foram criados os tokens semânticos `--bg-section-alt` (`#E7E9EF`), `--bg-card-on-alt` (`#FFFFFF`), `--bg-page` (`#F3F4F6`), `--border-subtle` (`#D1D5DB`), `--border-medium` (`#9CA3AF`) e `--shadow-card` em [css/tokens.css](file:///c:/Users/fael/Desktop/EGS-Digital/css/tokens.css#L83-L116).
+     - No modo claro, as seções alternam entre `#F3F4F6` e `#E7E9EF`, enquanto **todos os cards e caixas principais saltam em branco puro (`#FFFFFF`)** com bordas nítidas e elevação sutil, eliminando a sensação de "tudo parecer uma coisa só".
+- **Arquivos Atualizados:**
+  - [index.html](file:///c:/Users/fael/Desktop/EGS-Digital/index.html)
+  - [css/tokens.css](file:///c:/Users/fael/Desktop/EGS-Digital/css/tokens.css)
+  - [css/base.css](file:///c:/Users/fael/Desktop/EGS-Digital/css/base.css)
+  - [css/components.css](file:///c:/Users/fael/Desktop/EGS-Digital/css/components.css)
+  - [js/main.js](file:///c:/Users/fael/Desktop/EGS-Digital/js/main.js)
+  - [instruction.md](file:///c:/Users/fael/Desktop/EGS-Digital/instruction.md)
+- **Publicação & Próximos Passos Pendentes (Handoff):**
+  - Versão **EGS 2.0** validada pelo usuário e publicada no GitHub Pages (`https://rafael-coimbra074.github.io/EGS-Digital/`), mantendo a tag `v1.0-baseline` preservada.
+  - Na próxima sessão: substituir as 8 empresas ilustrativas do carrossel (`#clientes`) pelas logos/nomes reais dos clientes da EGS Digital, avaliar inclusão de fotos reais de infraestrutura/equipe da EGS em BH e evoluir novos refinamentos solicitados pelo usuário.
+
+
+
+
 
 

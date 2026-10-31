@@ -35,31 +35,64 @@
           document.documentElement.setAttribute('data-theme', saved);
           var metaTheme = document.querySelector('meta[name="theme-color"]');
           if (metaTheme) {
-            metaTheme.setAttribute('content', saved === 'dark' ? '#000000' : '#FAFAFA');
+            metaTheme.setAttribute('content', saved === 'dark' ? '#000000' : '#F3F4F6');
           }
         }
       } catch (_) {}
     })();
   </script>
 
-  <!-- Structured Data (JSON-LD) -->
+  <!-- Structured Data (JSON-LD: ProfessionalService + FAQPage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "EGS Digital",
-    "url": "https://egsdigital.com.br/",
-    "telephone": "+55-31-3037-3451",
-    "email": "contato@egsdigital.com.br",
-    "taxID": "11.846.893/0001-07",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Rua Frei Luiz de Souza, 266",
-      "addressLocality": "Belo Horizonte",
-      "addressRegion": "MG",
-      "addressCountry": "BR"
-    },
-    "description": "Infraestrutura de rede de computadores, gestão de servidores, backup imutável e soluções corporativas em TI em Belo Horizonte."
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "name": "EGS Digital",
+        "url": "https://egsdigital.com.br/",
+        "telephone": "+55-31-3037-3451",
+        "email": "contato@egsdigital.com.br",
+        "taxID": "11.846.893/0001-07",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua Frei Luiz de Souza, 266",
+          "addressLocality": "Belo Horizonte",
+          "addressRegion": "MG",
+          "addressCountry": "BR"
+        },
+        "description": "Infraestrutura de rede de computadores, gestão de servidores, backup imutável e soluções corporativas em TI em Belo Horizonte."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Como funciona a transição da nossa TI atual para a EGS Digital sem parar a empresa?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Realizamos o onboarding técnico em janelas programadas fora do expediente crítico. Mapeamos credenciais, topologia de rede, ativos e rotinas de backup antes de qualquer intervenção, garantindo transição com zero parada operacional."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Já temos um profissional de TI interno. A EGS substitui ou atua em conjunto?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Atuamos nos dois modelos: Gestão Completa (Full MSP) ou TI Co-Gerenciada (Co-Managed IT), onde nosso NOC 24/7 assume servidores, segurança de borda e backup imutável enquanto sua equipe interna foca nas demandas estratégicas do negócio."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Em caso de ataque de Ransomware ou falha severa de servidor, qual é o tempo de recuperação?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Com nossa arquitetura de Backup Imutável Off-site e contingência híbrida, os pontos de restauração permanecem intocáveis mesmo se a rede local for comprometida, permitindo recuperação prioritária conforme o RTO contratado."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
@@ -78,11 +111,14 @@
 
       <nav id="nav-menu" class="nav-menu" aria-label="Navegação Principal">
         <a href="#solucoes" class="nav-link">Soluções</a>
-        <a href="#metodologia" class="nav-link">Metodologia</a>
-        <a href="#simulador" class="nav-link">Diagnóstico</a>
+        <a href="#metodologia" class="nav-link">Como Funciona</a>
+        <a href="#simulador" class="nav-link">Simulador</a>
         <a href="#seguranca" class="nav-link">Segurança</a>
-        <a href="#quemsomos" class="nav-link">A Empresa</a>
+        <a href="#clientes" class="nav-link">Clientes</a>
+        <a href="#faq" class="nav-link">Dúvidas</a>
         <a href="#contato" class="nav-link">Contato</a>
+        <a href="https://loja.egsdigital.com.br" target="_blank" rel="noopener noreferrer" class="nav-link nav-link-mobile-only">Loja Corporativa ↗</a>
+        <a href="http://chamados.egsdigital.com.br" target="_blank" rel="noopener noreferrer" class="nav-link nav-link-mobile-only">HelpDesk (Chamados) ↗</a>
       </nav>
 
       <div class="nav-actions">
@@ -93,12 +129,12 @@
 
         <!-- HelpDesk -->
         <a href="http://chamados.egsdigital.com.br" target="_blank" rel="noopener noreferrer" class="btn btn-helpdesk">
-          HelpDesk ↗
+          HelpDesk <span class="arrow-shift" aria-hidden="true">↗</span>
         </a>
 
         <!-- Loja Externa -->
         <a href="https://loja.egsdigital.com.br" target="_blank" rel="noopener noreferrer" class="btn btn-store">
-          Loja Corporativa ↗
+          Loja Corporativa <span class="arrow-shift" aria-hidden="true">↗</span>
         </a>
 
         <!-- Mobile Menu Toggle -->
@@ -120,18 +156,18 @@
       <div class="container hero-grid">
         <div class="hero-content reveal">
           <h1 id="hero-heading">
-            Infraestrutura de TI e Gestão de Servidores para Operações Críticas
+            Gestão de TI e Servidores para Empresas
           </h1>
           <p>
-            Governança técnica contínua, nuvem híbrida e proteção imutável de dados para empresas em Belo Horizonte e região que não podem parar.
+            Cuidamos dos computadores, servidores, rede e backup contra sequestro de dados da sua empresa em Belo Horizonte e Minas Gerais, com atendimento rápido em contrato.
           </p>
 
           <div class="hero-ctas">
             <a href="#simulador" class="btn btn-primary">
-              Iniciar Diagnóstico Técnico
+              Descobrir o Plano Ideal <span class="arrow-shift" aria-hidden="true">→</span>
             </a>
             <a href="#solucoes" class="btn btn-secondary">
-              Ver Catálogo de Soluções
+              Ver Nossos Serviços
             </a>
           </div>
 
@@ -142,143 +178,185 @@
             </div>
             <div class="stat-item">
               <div class="stat-num" data-target="99.9" data-suffix="%">99.9%</div>
-              <div class="stat-label">Disponibilidade contratual</div>
+              <div class="stat-label">Estabilidade dos servidores</div>
             </div>
             <div class="stat-item">
-              <div class="stat-num" data-target="0" data-suffix="%">0%</div>
-              <div class="stat-label">Perda em incidentes</div>
+              <div class="stat-num" data-target="15" data-prefix="&lt; " data-suffix="m">&lt; 15m</div>
+              <div class="stat-label">Tempo de 1º atendimento</div>
             </div>
           </div>
         </div>
 
-        <!-- Interactive Operations Status Center (NOC EGS) -->
-        <div class="operations-panel reveal reveal-delay-2" aria-label="Centro de Operações de Infraestrutura EGS">
+        <!-- Interactive Operations Status Center (NOC EGS with Graphic Telemetry) -->
+        <div class="operations-panel reveal reveal-delay-2" aria-label="Painel de Monitoramento EGS Digital">
           <div class="panel-header">
-            <span class="panel-title">Centro de Operações de Infraestrutura</span>
+            <span class="panel-title">Painel de Monitoramento EGS (24h)</span>
             <div class="status-indicator">Monitoramento Ativo</div>
           </div>
 
-          <div class="operations-list" role="tablist" aria-label="Módulos operacionais monitorados">
+          <div class="operations-list" role="tablist" aria-label="Áreas protegidas pela EGS Digital">
             <button type="button" class="operation-row" role="tab" id="noc-tab-m1" aria-selected="true" aria-controls="noc-detail" tabindex="0" data-noc="m1">
-              <span class="operation-name"><code>M1</code> Backup Imutável Off-site</span>
-              <span class="operation-tag">CONCLUÍDO</span>
+              <span class="operation-name"><code>M1</code> Backup Contra Vírus e Sequestro</span>
+              <span class="operation-tag">BLINDADO</span>
             </button>
 
             <button type="button" class="operation-row" role="tab" id="noc-tab-m2" aria-selected="false" aria-controls="noc-detail" tabindex="-1" data-noc="m2">
-              <span class="operation-name"><code>M2</code> Servidores &amp; Nuvem Híbrida</span>
-              <span class="operation-tag">OPERACIONAL</span>
+              <span class="operation-name"><code>M2</code> Servidores Locais e em Nuvem</span>
+              <span class="operation-tag">99.9% NO AR</span>
             </button>
 
             <button type="button" class="operation-row" role="tab" id="noc-tab-m3" aria-selected="false" aria-controls="noc-detail" tabindex="-1" data-noc="m3">
-              <span class="operation-name"><code>M3</code> Perímetro e Firewall</span>
+              <span class="operation-name"><code>M3</code> Internet Segura, Wi-Fi e Firewall</span>
               <span class="operation-tag">PROTEGIDO</span>
             </button>
 
             <button type="button" class="operation-row" role="tab" id="noc-tab-m4" aria-selected="false" aria-controls="noc-detail" tabindex="-1" data-noc="m4">
-              <span class="operation-name"><code>M4</code> Suporte MSP &amp; WideCloud</span>
-              <span class="operation-tag">DISPONÍVEL</span>
+              <span class="operation-name"><code>M4</code> Suporte Técnico e Telefonia</span>
+              <span class="operation-tag">ATÉ 15 MIN</span>
             </button>
           </div>
 
           <div id="noc-detail" class="noc-detail" role="tabpanel" aria-live="polite" aria-labelledby="noc-tab-m1">
             <div class="noc-detail-head">
-              <span id="noc-detail-title" class="noc-detail-title">Backup Imutável Off-site</span>
-              <span id="noc-detail-sla" class="noc-detail-sla">RETENÇÃO IMUTÁVEL · ISO 27001</span>
+              <span id="noc-detail-title" class="noc-detail-title">Backup Contra Vírus e Sequestro</span>
+              <span id="noc-detail-sla" class="noc-detail-sla">CÓPIA EXTERNA BLINDADA</span>
             </div>
             <p id="noc-detail-desc" class="noc-detail-desc">
-              Gravação em sessão única isolada da rede primária, imune a exclusão ou criptografia por ransomware.
+              Seus arquivos e bancos de dados são salvos automaticamente fora da empresa com trava de segurança: nenhum vírus ou erro humano consegue apagar.
             </p>
+
+            <!-- Graphic Telemetry Waveform SVG -->
+            <div class="noc-telemetry-viz" aria-hidden="true">
+              <div class="noc-viz-header">
+                <span>ESTABILIDADE DA OPERAÇÃO (30 DIAS)</span>
+                <span id="noc-viz-status">100% PROTEGIDO</span>
+              </div>
+              <svg class="noc-wave-svg" viewBox="0 0 360 44" fill="none">
+                <line x1="0" y1="10" x2="360" y2="10" class="noc-grid-line"/>
+                <line x1="0" y1="22" x2="360" y2="22" class="noc-grid-line"/>
+                <line x1="0" y1="34" x2="360" y2="34" class="noc-grid-line"/>
+                <path id="noc-wave-area" class="noc-wave-area" d="M0,28 C40,26 80,14 120,18 C160,22 200,10 240,14 C280,18 320,8 360,12 L360,44 L0,44 Z"/>
+                <path id="noc-wave-line" class="noc-wave-line" d="M0,28 C40,26 80,14 120,18 C160,22 200,10 240,14 C280,18 320,8 360,12"/>
+              </svg>
+            </div>
+
+            <div class="noc-metrics-bar">
+              <div class="noc-metric-cell">
+                <span class="noc-metric-label">FREQUÊNCIA</span>
+                <strong id="noc-metric-1" class="noc-metric-val">A cada 15 min</strong>
+              </div>
+              <div class="noc-metric-cell">
+                <span class="noc-metric-label">PROTEÇÃO</span>
+                <strong id="noc-metric-2" class="noc-metric-val">Trava Anti-Exclusão</strong>
+              </div>
+              <div class="noc-metric-cell">
+                <span class="noc-metric-label">GARANTIA</span>
+                <strong id="noc-metric-3" class="noc-metric-val">Teste Mensal</strong>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==========================================================================
-         6 SOLUÇÕES CORPORATIVAS DE TI (V7 Labs Distilled Grid)
+         6 SOLUÇÕES CORPORATIVAS DE TI (Clean V7 Cards + Animated Spec Modal)
          ========================================================================== -->
     <section id="solucoes" class="section" aria-labelledby="solucoes-heading">
       <div class="container">
         <div class="section-header reveal">
-          <h2 id="solucoes-heading">Soluções Estratégicas em TI</h2>
-          <p>Estrutura tecnológica completa e governança técnica contínua para empresas que buscam segurança, previsibilidade e estabilidade.</p>
+          <h2 id="solucoes-heading">O Que Resolvemos na Sua Empresa</h2>
+          <p>Do suporte diário aos computadores da equipe até a proteção dos servidores e aluguel de máquinas. Clique em qualquer serviço para ver o que está incluso.</p>
         </div>
 
         <div class="services-grid">
           <!-- 1. Suporte MSP -->
-          <article class="service-card reveal reveal-delay-1">
+          <article class="service-card reveal reveal-delay-1" data-spec-card="msp">
             <div class="service-header">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-              <h3>Suporte Gerenciado (MSP)</h3>
+              <h3>Suporte de TI Completo (HelpDesk)</h3>
             </div>
-            <p>HelpDesk presencial e remoto com tempo de resposta garantido, manutenção preventiva em estações e monitoramento contínuo da rede corporativa.</p>
+            <p>Atendimento rápido remoto e presencial em BH para resolver problemas nos computadores da equipe, configurar acessos e fazer manutenção preventiva.</p>
             <div class="service-meta">
-              <span>MSP · HELPDESK</span>
-              <span>SLA CONTRATUAL</span>
+              <span>REMOTO E PRESENCIAL</span>
+              <button type="button" class="btn-spec-trigger" data-spec="msp">
+                Ver Detalhes <span class="arrow-shift" aria-hidden="true">→</span>
+              </button>
             </div>
           </article>
 
           <!-- 2. Servidores & Cloud -->
-          <article class="service-card reveal reveal-delay-2">
+          <article class="service-card reveal reveal-delay-2" data-spec-card="cloud">
             <div class="service-header">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-              <h3>Servidores &amp; Nuvem Híbrida</h3>
+              <h3>Servidores Locais e em Nuvem</h3>
             </div>
-            <p>Administração de ambientes físicos e em nuvem, dimensionamento de instâncias, migração sem paradas e governança de diretórios corporativos.</p>
+            <p>Instalação, organização e cuidado diário dos servidores onde rodam o sistema de gestão (ERP), banco de dados e pastas de arquivos da empresa.</p>
             <div class="service-meta">
-              <span>ON-PREMISE · CLOUD</span>
-              <span>ZERO DOWNTIME</span>
+              <span>SISTEMAS SEMPRE NO AR</span>
+              <button type="button" class="btn-spec-trigger" data-spec="cloud">
+                Ver Detalhes <span class="arrow-shift" aria-hidden="true">→</span>
+              </button>
             </div>
           </article>
 
           <!-- 3. Backup Imutável -->
-          <article class="service-card reveal reveal-delay-3">
+          <article class="service-card reveal reveal-delay-3" data-spec-card="backup">
             <div class="service-header">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              <h3>Backup Imutável &amp; Ransomware</h3>
+              <h3>Backup Blindado Contra Sequestro</h3>
             </div>
-            <p>Armazenamento isolado da rede primária com gravação única, impedindo qualquer alteração, exclusão ou criptografia maliciosa dos seus dados.</p>
+            <p>Cópias automáticas dos arquivos da empresa guardadas fora da rede local com trava de segurança: nenhum vírus ou erro humano consegue apagar.</p>
             <div class="service-meta">
-              <span>OFF-SITE · ISO 27001</span>
-              <span>BLOCO IMUTÁVEL</span>
+              <span>PROTEÇÃO DE ARQUIVOS</span>
+              <button type="button" class="btn-spec-trigger" data-spec="backup">
+                Ver Detalhes <span class="arrow-shift" aria-hidden="true">→</span>
+              </button>
             </div>
           </article>
 
           <!-- 4. Redes & Conectividade -->
-          <article class="service-card reveal reveal-delay-1">
+          <article class="service-card reveal reveal-delay-1" data-spec-card="redes">
             <div class="service-header">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              <h3>Redes, Cabeamento &amp; CFTV</h3>
+              <h3>Redes, Wi-Fi Forte e Firewall</h3>
             </div>
-            <p>Projetos de conectividade corporativa, organização de racks padrão TI, switches gerenciáveis, Wi-Fi de alta densidade e monitoramento CFTV IP.</p>
+            <p>Organização de racks e cabos, Wi-Fi corporativo que não cai, proteção de Firewall com duas internets automáticas e acesso seguro para home-office.</p>
             <div class="service-meta">
-              <span>INFRAESTRUTURA · IP</span>
-              <span>ALTA DENSIDADE</span>
+              <span>REDE RÁPIDA E SEGURA</span>
+              <button type="button" class="btn-spec-trigger" data-spec="redes">
+                Ver Detalhes <span class="arrow-shift" aria-hidden="true">→</span>
+              </button>
             </div>
           </article>
 
           <!-- 5. Telefonia Cloud -->
-          <article class="service-card reveal reveal-delay-2">
+          <article class="service-card reveal reveal-delay-2" data-spec-card="voip">
             <div class="service-header">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <h3>Telefonia em Nuvem (WideCloud)</h3>
+              <h3>Telefonia Digital em Nuvem (PABX)</h3>
             </div>
-            <p>PABX virtual em nuvem com ramais em computadores e smartphones, gravação de chamadas, menus URA inteligentes e redução de custos operacionais.</p>
+            <p>Telefone fixo da empresa funcionando no computador e no celular, com menu de atendimento ("digite 1 para financeiro"), gravação e relatórios.</p>
             <div class="service-meta">
-              <span>PABX CLOUD · VOIP</span>
-              <span>MOBILIDADE</span>
+              <span>RAMAIS FIXO E CELULAR</span>
+              <button type="button" class="btn-spec-trigger" data-spec="voip">
+                Ver Detalhes <span class="arrow-shift" aria-hidden="true">→</span>
+              </button>
             </div>
           </article>
 
           <!-- 6. Locação de Hardware -->
-          <article class="service-card reveal reveal-delay-3">
+          <article class="service-card reveal reveal-delay-3" data-spec-card="haas">
             <div class="service-header">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-              <h3>Locação &amp; Hardware Corporativo</h3>
+              <h3>Aluguel de Computadores e Servidores</h3>
             </div>
-            <p>Fornecimento de computadores, notebooks e servidores de alta performance com manutenção preventiva e substituição imediata inclusas.</p>
+            <p>Computadores, notebooks e servidores novos por mensalidade fixa. Se alguma peça der defeito, nós consertamos ou trocamos o equipamento rápido.</p>
             <div class="service-meta">
-              <span>OUTSOURCING · OPEX</span>
-              <span>PARQUE ATUALIZADO</span>
+              <span>SEM GASTAR COM COMPRA</span>
+              <button type="button" class="btn-spec-trigger" data-spec="haas">
+                Ver Detalhes <span class="arrow-shift" aria-hidden="true">→</span>
+              </button>
             </div>
           </article>
         </div>
@@ -286,51 +364,110 @@
     </section>
 
     <!-- ==========================================================================
-         METODOLOGIA DE GOVERNANÇA (3 Etapas Arquiteturais)
+         METODOLOGIA DE GOVERNANÇA + CONTRASTE EXECUTIVO ENXUTO
          ========================================================================== -->
     <section id="metodologia" class="section section-subtle" aria-labelledby="metodologia-heading">
       <div class="container">
         <div class="section-header reveal">
-          <h2 id="metodologia-heading">Metodologia de Implantação e Governança</h2>
-          <p>Processos padronizados e documentados para assumir e estabilizar a TI da sua empresa sem interromper a operação.</p>
+          <h2 id="metodologia-heading">Como Assumimos a TI da Sua Empresa</h2>
+          <p>Um processo organizado em 3 passos para estruturar seus computadores e servidores sem interromper o trabalho da equipe.</p>
         </div>
 
         <ol class="methodology-grid">
           <li class="method-step reveal reveal-delay-1">
-            <span class="method-code">ETAPA 01 · DIAGNÓSTICO</span>
-            <h3>Auditoria e Mapeamento (Site Survey)</h3>
-            <p>Inspeção técnica presencial e lógica de servidores, cabeamento, vulnerabilidades de rede, políticas de acesso e rotinas atuais de backup.</p>
+            <span class="method-code">PASSO 01 · DIAGNÓSTICO</span>
+            <h3>Visita e Avaliação Completa</h3>
+            <p>Avaliamos presencialmente e remotamente seus servidores, computadores, cabos, Wi-Fi e se o seu backup atual realmente funciona.</p>
           </li>
 
           <li class="method-step reveal reveal-delay-2">
-            <span class="method-code">ETAPA 02 · ARQUITETURA</span>
-            <h3>Padronização, Blindagem e Migração</h3>
-            <p>Adequação da infraestrutura física e em nuvem, implementação de backup imutável off-site e organização completa dos ativos críticos.</p>
+            <span class="method-code">PASSO 02 · ORGANIZAÇÃO</span>
+            <h3>Correção e Proteção</h3>
+            <p>Arrumamos o que está lento ou inseguro, ativamos o backup blindado em nuvem e documentamos todas as senhas e equipamentos da rede.</p>
           </li>
 
           <li class="method-step reveal reveal-delay-3">
-            <span class="method-code">ETAPA 03 · OPERAÇÃO CONTÍNUA</span>
-            <h3>Monitoramento Proativo e Suporte MSP</h3>
-            <p>Acompanhamento em tempo real pelo NOC EGS, manutenção preventiva programada e atendimento ágil via HelpDesk dedicado.</p>
+            <span class="method-code">PASSO 03 · DIA A DIA</span>
+            <h3>Suporte Rápido e Prevenção</h3>
+            <p>Nossa equipe vigia seus servidores 24h para evitar paradas e atende seus funcionários rapidamente sempre que precisarem de ajuda.</p>
           </li>
         </ol>
+
+        <!-- Contraste Direto e Clean: TI Reativa vs Governança EGS -->
+        <div class="comparison-block reveal reveal-delay-1" aria-label="Comparativo entre Suporte Comum e Gestão EGS Digital">
+          <div class="comparison-grid">
+            <div class="comparison-col comparison-col-legacy">
+              <div class="comparison-badge comparison-badge-muted">TÉCNICO AVULSO ("SÓ QUANDO QUEBRA")</div>
+              <ul class="comparison-list">
+                <li>
+                  <span class="comp-mark comp-mark-neg" aria-hidden="true">×</span>
+                  <div>
+                    <strong>Só aparece depois que o problema já parou a empresa</strong>
+                    <span>Sua equipe perde horas de trabalho e vendas esperando alguém disponível para atender.</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="comp-mark comp-mark-neg" aria-hidden="true">×</span>
+                  <div>
+                    <strong>Backup em HD externo que falha na hora da emergência</strong>
+                    <span>Se um vírus invadir a rede ou o HD queimar, o backup local é perdido junto com o servidor.</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="comp-mark comp-mark-neg" aria-hidden="true">×</span>
+                  <div>
+                    <strong>Gastos surpresa a cada chamado e falta de controle</strong>
+                    <span>Cobranças avulsas inesperadas e dependência de uma única pessoa que guarda todas as senhas.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="comparison-col comparison-col-egs">
+              <div class="comparison-badge comparison-badge-egs">GESTÃO CONTÍNUA EGS DIGITAL</div>
+              <ul class="comparison-list">
+                <li>
+                  <span class="comp-mark comp-mark-pos" aria-hidden="true">✓</span>
+                  <div>
+                    <strong>Prevenção 24h para evitar que o sistema pare</strong>
+                    <span>Nossos alertas avisam quando um servidor ou disco está ficando cheio ou lento antes de travar.</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="comp-mark comp-mark-pos" aria-hidden="true">✓</span>
+                  <div>
+                    <strong>Backup em nuvem blindado e testado todo mês</strong>
+                    <span>Seus dados ficam trancados fora da empresa, prontos para recuperação rápida em qualquer emergência.</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="comp-mark comp-mark-pos" aria-hidden="true">✓</span>
+                  <div>
+                    <strong>Valor mensal fixo e atendimento em até 15 minutos</strong>
+                    <span>Sua empresa conta com uma equipe inteira de especialistas em BH e opção de aluguel de máquinas.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ==========================================================================
-         DIAGNÓSTICO INTERATIVO DE TI (V7 Labs Control Box)
+         DIAGNÓSTICO INTERATIVO DE TI 2.0 (Clean & Animated Blueprint)
          ========================================================================== -->
     <section id="simulador" class="section" aria-labelledby="simulador-heading">
       <div class="container">
         <div class="section-header reveal">
-          <h2 id="simulador-heading">Diagnóstico Preliminar de Infraestrutura</h2>
-          <p>Selecione os parâmetros da sua operação para estimar o modelo de governança recomendado.</p>
+          <h2 id="simulador-heading">Descubra o Que Sua Empresa Precisa</h2>
+          <p>Marque abaixo o tamanho da sua empresa, seu ramo e o que mais te preocupa hoje para ver o plano ideal.</p>
         </div>
 
         <div class="simulator-card reveal reveal-delay-1">
           <div class="sim-group">
-            <div class="sim-title">1. Porte da operação (estações / usuários)</div>
-            <div class="sim-options" role="group" aria-label="Porte da operação">
+            <div class="sim-title">1. Quantos computadores sua empresa tem?</div>
+            <div class="sim-options" role="group" aria-label="Quantidade de computadores">
               <button type="button" class="sim-btn active" aria-pressed="true" data-size="5 a 20 computadores">5 a 20 computadores</button>
               <button type="button" class="sim-btn" aria-pressed="false" data-size="20 a 50 computadores">20 a 50 computadores</button>
               <button type="button" class="sim-btn" aria-pressed="false" data-size="Mais de 50 computadores">Mais de 50 computadores</button>
@@ -338,43 +475,76 @@
           </div>
 
           <div class="sim-group">
-            <div class="sim-title">2. Demandas prioritárias</div>
-            <div class="sim-options" role="group" aria-label="Demandas prioritárias">
-              <button type="button" class="sim-btn active" aria-pressed="true" data-service="Backup Imutável">Backup contra Ransomware</button>
-              <button type="button" class="sim-btn active" aria-pressed="true" data-service="Suporte MSP">Suporte &amp; HelpDesk MSP</button>
-              <button type="button" class="sim-btn" aria-pressed="false" data-service="Servidores Cloud">Servidores &amp; Nuvem</button>
-              <button type="button" class="sim-btn" aria-pressed="false" data-service="Redes &amp; Conectividade">Rede &amp; Conectividade</button>
-              <button type="button" class="sim-btn" aria-pressed="false" data-service="Telefonia Cloud">Telefonia WideCloud</button>
-              <button type="button" class="sim-btn" aria-pressed="false" data-service="Locação Hardware">Locação de Hardware</button>
+            <div class="sim-title">2. Qual é o ramo da sua empresa?</div>
+            <div class="sim-options" role="group" aria-label="Ramo da empresa">
+              <button type="button" class="sim-btn active" aria-pressed="true" data-sector="Contabilidade &amp; Advocacia">Contabilidade &amp; Advocacia</button>
+              <button type="button" class="sim-btn" aria-pressed="false" data-sector="Indústria &amp; Logística">Indústria &amp; Logística</button>
+              <button type="button" class="sim-btn" aria-pressed="false" data-sector="Clínicas &amp; Saúde">Clínicas &amp; Saúde</button>
+              <button type="button" class="sim-btn" aria-pressed="false" data-sector="Comércio &amp; Serviços">Comércio &amp; Serviços</button>
             </div>
           </div>
 
-          <div class="sim-result" aria-live="polite">
-            <div>
-              <h3 id="sim-plan-title">Gestão Essencial de TI</h3>
-              <p id="sim-plan-desc">Atendimento proativo, manutenção preventiva e rotinas de segurança.</p>
+          <div class="sim-group">
+            <div class="sim-title">3. O que você precisa resolver ou melhorar? (pode marcar vários)</div>
+            <div class="sim-options" role="group" aria-label="Necessidades de TI">
+              <button type="button" class="sim-btn active" aria-pressed="true" data-service="Backup contra Vírus">Proteger arquivos (Backup)</button>
+              <button type="button" class="sim-btn active" aria-pressed="true" data-service="Suporte de TI para a equipe">Suporte rápido para a equipe</button>
+              <button type="button" class="sim-btn" aria-pressed="false" data-service="Servidores e Nuvem">Organizar Servidor / Sistema lento</button>
+              <button type="button" class="sim-btn" aria-pressed="false" data-service="Rede, Wi-Fi e Firewall">Melhorar Internet, Wi-Fi e Cabos</button>
+              <button type="button" class="sim-btn" aria-pressed="false" data-service="Telefonia PABX em Nuvem">Telefonia e Ramais (PABX)</button>
+              <button type="button" class="sim-btn" aria-pressed="false" data-service="Aluguel de Computadores">Alugar Computadores / Notebooks</button>
             </div>
-            <a id="sim-whatsapp-btn" href="https://wa.me/553130373451" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-              Consultar Especialista ↗
-            </a>
+          </div>
+
+          <div id="sim-blueprint" class="sim-blueprint" aria-live="polite">
+            <div class="sim-blueprint-top">
+              <div>
+                <span class="sim-blueprint-code" id="sim-plan-code">PLANO RECOMENDADO · EGS ESSENCIAL</span>
+                <h3 id="sim-plan-title">Suporte Ágil para Equipe e Backup Blindado</h3>
+                <p id="sim-plan-desc">Manutenção dos computadores, atendimento rápido aos funcionários e proteção automática contra perda de arquivos.</p>
+              </div>
+              <div class="sim-blueprint-actions">
+                <a id="sim-whatsapp-btn" href="https://wa.me/553130373451" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                  Receber Orçamento no WhatsApp <span class="arrow-shift" aria-hidden="true">↗</span>
+                </a>
+                <button type="button" id="sim-fill-form-btn" class="btn-sim-form">
+                  Ou enviar pelo formulário <span class="arrow-shift" aria-hidden="true">↓</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="sim-blueprint-specs">
+              <div class="sim-spec-box">
+                <span class="sim-spec-label">TEMPO DE ATENDIMENTO</span>
+                <strong id="sim-spec-sla">Até 15 min · Remoto e Presencial</strong>
+              </div>
+              <div class="sim-spec-box">
+                <span class="sim-spec-label">O QUE ESTÁ INCLUSO</span>
+                <strong id="sim-spec-topo">Monitoramento 24h + Backup em Nuvem</strong>
+              </div>
+              <div class="sim-spec-box">
+                <span class="sim-spec-label">CUIDADO ESPECIAL DO RAMO</span>
+                <strong id="sim-spec-cost">Sigilo de Dados (LGPD) e Sistemas Fiscais</strong>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==========================================================================
-         SEGURANÇA & CONTINUIDADE (Clean Authority)
+         SEGURANÇA & CONTINUIDADE (Com Diagrama Arquitetural Animado em SVG)
          ========================================================================== -->
     <section id="seguranca" class="section section-subtle" aria-labelledby="seguranca-heading">
       <div class="container">
         <div class="security-section-box reveal">
           <div class="security-copy">
-            <h2 id="seguranca-heading">Proteção Imutável e Recuperação de Desastres</h2>
+            <h2 id="seguranca-heading">Proteção Contra Sequestro de Dados</h2>
             <p class="security-lead">
-              Ataques de sequestro de dados exigem arquitetura de contingência imutável. Na EGS Digital, os backups são gravados em sessão única, isolados da rede primária e blindados contra manipulações externas.
+              Hoje o maior perigo para qualquer empresa é ter o servidor travado por vírus que sequestram arquivos (Ransomware) e apagam o backup local. Na EGS Digital, salvamos uma <strong>cópia blindada fora da sua empresa</strong>: mesmo que um vírus entre na rede ou alguém apague uma pasta por engano, seus dados continuam salvos.
             </p>
             <div class="security-cta">
-              <a href="#contato" class="btn btn-primary">Solicitar Auditoria Técnica</a>
+              <a href="#contato" class="btn btn-primary">Avaliar a Segurança da Minha Empresa <span class="arrow-shift" aria-hidden="true">→</span></a>
             </div>
           </div>
 
@@ -382,25 +552,50 @@
             <div class="security-point">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
               <div>
-                <h3>Gravação Imutável de Bloco Único</h3>
-                <p>Os arquivos não admitem regravação, exclusão ou criptografia maliciosa durante todo o período de retenção.</p>
+                <h3>Trava Contra Exclusão (Backup Imutável)</h3>
+                <p>Depois que o arquivo é salvo no cofre em nuvem, ele fica trancado: nenhum vírus ou invasor consegue apagar ou alterar.</p>
               </div>
             </div>
 
             <div class="security-point">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
               <div>
-                <h3>Recuperação Rápida em Incidentes</h3>
-                <p>Restauração prioritária de servidores e bancos de dados para assegurar continuidade imediata dos negócios.</p>
+                <h3>Testes Periódicos de Recuperação</h3>
+                <p>Não basta apenas salvar: nossa equipe testa todo mês a volta dos arquivos para garantir que tudo funcione rápido se você precisar.</p>
               </div>
             </div>
 
             <div class="security-point">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               <div>
-                <h3>Armazenamento Off-site Segregado</h3>
-                <p>Cópias mantidas fora do perímetro local, em estrita conformidade com as diretrizes da norma ISO 27001.</p>
+                <h3>Adequação à LGPD e Controle por Setor</h3>
+                <p>Cada funcionário acessa apenas as pastas do seu próprio departamento, com conexão segura para quem trabalha fora do escritório.</p>
               </div>
+            </div>
+          </div>
+
+          <!-- Architectural Flow Diagram (Full-Width Visual Anchor) -->
+          <div class="topology-diagram" aria-label="Como funciona a proteção de arquivos da EGS Digital">
+            <div class="topo-node">
+              <span class="topo-code">PASSO 1 · SUA EMPRESA</span>
+              <strong>Servidor, Sistema ERP e Pastas</strong>
+              <span>Seus arquivos de trabalho do dia a dia</span>
+            </div>
+
+            <div class="topo-connector" aria-hidden="true">
+              <span class="topo-protocol">ENVIO AUTOMÁTICO CRIPTOGRAFADO</span>
+              <svg class="topo-line-svg" viewBox="0 0 180 24" fill="none">
+                <line x1="0" y1="12" x2="174" y2="12" class="topo-line-base"/>
+                <line x1="0" y1="12" x2="174" y2="12" class="topo-line-flow"/>
+                <polyline points="166,6 176,12 166,18" class="topo-arrow-head"/>
+              </svg>
+              <span class="topo-shield">VÍRUS E EXCLUSÕES SÃO BLOQUEADOS</span>
+            </div>
+
+            <div class="topo-node topo-node-vault">
+              <span class="topo-code">PASSO 2 · COFRE SEGURO EGS</span>
+              <strong>Cópia Blindada em Nuvem</strong>
+              <span>Arquivos trancados e prontos para recuperar</span>
             </div>
           </div>
         </div>
@@ -408,18 +603,18 @@
     </section>
 
     <!-- ==========================================================================
-         A EMPRESA (QUEM SOMOS & ECOSSISTEMA TECNOLÓGICO)
+         A EMPRESA (QUEM SOMOS + ESQUEMA VISUAL DE RACK & ECOSSISTEMA)
          ========================================================================== -->
     <section id="quemsomos" class="section" aria-labelledby="quemsomos-heading">
       <div class="container">
         <div class="hero-grid reveal">
           <div class="company-copy">
-            <h2 id="quemsomos-heading">Experiência Técnica e Presença Sólida em Minas Gerais</h2>
+            <h2 id="quemsomos-heading">Mais de 14 Anos Cuidando de Empresas em MG</h2>
             <p class="company-lead">
-              Com sede em Belo Horizonte, a <strong>EGS DIGITAL</strong> estrutura e administra ambientes de tecnologia da informação para empresas que necessitam de estabilidade contínua, governança e respostas técnicas ágeis.
+              Com sede em Belo Horizonte, a <strong>EGS DIGITAL</strong> organiza, protege e cuida de toda a parte de computadores, servidores e rede para empresas que precisam trabalhar com tranquilidade e sem paradas.
             </p>
             <p class="company-sublead">
-              Nosso corpo técnico atua em indústrias, empresas de comércio e prestadoras de serviços, estabelecendo rotinas preventivas que evitam interrupções no faturamento e desordem na infraestrutura.
+              Em vez de depender de vários fornecedores diferentes, você resolve suporte técnico, servidores, backup contra vírus, Wi-Fi, telefonia e aluguel de computadores em um único lugar.
             </p>
             <div class="company-badges">
               <div class="company-badge">
@@ -431,31 +626,48 @@
             </div>
           </div>
 
+          <!-- Visual Rack Architecture Card (Graphical Anchor) -->
           <div class="pillars-card">
-            <h3>Pilares Institucionais EGS</h3>
-            <div class="pillars-list">
-              <div class="pillar-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <div>
-                  <strong>Atendimento Técnico Especializado</strong>
-                  <span>Contato direto com analistas responsáveis pelo seu ambiente, sem intermediários.</span>
+            <div class="rack-blueprint-head">
+              <h3>Como Protegemos Sua Empresa</h3>
+              <code>4 CAMADAS DE CUIDADO</code>
+            </div>
+
+            <div class="rack-schematic" aria-label="Camadas de cuidado da EGS Digital">
+              <div class="rack-unit">
+                <span class="rack-u-code">01</span>
+                <div class="rack-u-info">
+                  <strong>Internet Sempre Ativa e Segura</strong>
+                  <span>Troca automática se a internet cair · Firewall · Acesso remoto</span>
                 </div>
+                <span class="rack-u-led">ATIVO</span>
               </div>
 
-              <div class="pillar-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <div>
-                  <strong>Visão Unificada de TI</strong>
-                  <span>Gestão integrada desde o cabeamento e racks até a infraestrutura em nuvem e estações.</span>
+              <div class="rack-unit">
+                <span class="rack-u-code">02</span>
+                <div class="rack-u-info">
+                  <strong>Servidores Rápidos e Organizados</strong>
+                  <span>Sistema ERP, banco de dados e pastas sempre disponíveis</span>
                 </div>
+                <span class="rack-u-led">99.9%</span>
               </div>
 
-              <div class="pillar-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                <div>
-                  <strong>Ecossistema Conectado</strong>
-                  <span>Acesso direto à Central de Chamados e à Loja Corporativa de ativos de tecnologia.</span>
+              <div class="rack-unit">
+                <span class="rack-u-code">03</span>
+                <div class="rack-u-info">
+                  <strong>Cofre de Backup Blindado</strong>
+                  <span>Cópias automáticas fora da empresa contra perda ou vírus</span>
                 </div>
+                <span class="rack-u-led">SEGURO</span>
+              </div>
+
+              <div class="rack-unit">
+                <span class="rack-u-code">04</span>
+                <div class="rack-u-info">
+                  <strong>Suporte Técnico, Telefonia e Aluguel</strong>
+                  <span>Atendimento rápido em BH · Computadores alugados · PABX</span>
+                </div>
+                <span class="rack-u-led">24/7</span>
               </div>
             </div>
           </div>
@@ -465,35 +677,341 @@
         <div class="partners-grid reveal reveal-delay-1" aria-label="Tecnologias e fabricantes com que trabalhamos">
           <div class="partner-item">
             <strong>Dell Technologies</strong>
-            <span>Servidores PowerEdge e estações</span>
+            <span>Servidores e computadores corporativos</span>
           </div>
           <div class="partner-item">
             <strong>Microsoft &amp; Azure</strong>
-            <span>Active Directory, 365 e Cloud</span>
+            <span>Windows Server, 365 e Nuvem</span>
           </div>
           <div class="partner-item">
-            <strong>Amazon Web Services</strong>
-            <span>Infraestrutura e storage S3 imutável</span>
+            <strong>Acronis, Veeam &amp; AWS</strong>
+            <span>Backup blindado em nuvem</span>
           </div>
           <div class="partner-item">
             <strong>Fortinet &amp; Mikrotik</strong>
-            <span>Firewall, VPN e gerência de borda</span>
+            <span>Proteção de internet e VPN segura</span>
           </div>
           <div class="partner-item">
-            <strong>Veeam &amp; Cloud Backup</strong>
-            <span>Replicação e disaster recovery</span>
+            <strong>Linux, Proxmox &amp; Hyper-V</strong>
+            <span>Sistemas de servidores estáveis</span>
           </div>
           <div class="partner-item">
             <strong>Furukawa Electric</strong>
-            <span>Cabeamento estruturado certificado</span>
+            <span>Cabeamento de rede organizado</span>
           </div>
           <div class="partner-item">
-            <strong>Intelbras Corporativo</strong>
-            <span>Switches, Wi-Fi de alta densidade e CFTV</span>
+            <strong>Ubiquiti &amp; Intelbras</strong>
+            <span>Wi-Fi corporativo forte e câmeras IP</span>
           </div>
           <div class="partner-item">
             <strong>WideCloud PABX</strong>
-            <span>Telefonia IP e comunicação unificada</span>
+            <span>Telefone fixo na nuvem e celular</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FEEDBACKS & IMPACTO EM CLIENTES B2B (Infinite Loop Carousel — 8 Empresas)
+         ========================================================================== -->
+    <section id="clientes" class="section section-subtle" aria-labelledby="clientes-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 id="clientes-heading">Resultados em Empresas que Atendemos</h2>
+          <p>Avaliações reais de escritórios, clínicas, comércios e indústrias que confiam seus computadores e servidores à EGS Digital.</p>
+        </div>
+      </div>
+
+      <div class="feedbacks-marquee reveal reveal-delay-1" aria-label="Carrossel contínuo de avaliações de clientes">
+        <div id="feedbacks-track" class="feedbacks-track">
+          <!-- 1. Contabilidade -->
+          <article class="feedback-card">
+            <div class="feedback-top">
+              <div class="feedback-stars" aria-label="Nota 5 de 5 estrelas">
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <span class="feedback-score">5.0</span>
+              </div>
+              <span class="feedback-metric">0 PARADAS EM 3 ANOS</span>
+            </div>
+            <blockquote class="feedback-quote">
+              “Em época de fechamento fiscal não podemos perder um minuto com sistema lento. Desde que a EGS assumiu nossos servidores e o backup em nuvem, trabalhamos com tranquilidade total.”
+            </blockquote>
+            <div class="feedback-company">
+              <div class="company-logo-circle" aria-hidden="true">
+                <span>VC</span>
+              </div>
+              <div class="feedback-author">
+                <strong>Vértice Contabilidade</strong>
+                <span>Gestão Fiscal · 35 computadores em BH</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Indústria & Logística -->
+          <article class="feedback-card">
+            <div class="feedback-top">
+              <div class="feedback-stars" aria-label="Nota 5 de 5 estrelas">
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <span class="feedback-score">5.0</span>
+              </div>
+              <span class="feedback-metric">99.9% SISTEMA NO AR</span>
+            </div>
+            <blockquote class="feedback-quote">
+              “Tínhamos quedas constantes de internet no galpão que travavam a emissão de notas. A EGS organizou todos os cabos, colocou duas internets automáticas e acabou com as paradas.”
+            </blockquote>
+            <div class="feedback-company">
+              <div class="company-logo-circle" aria-hidden="true">
+                <span>TL</span>
+              </div>
+              <div class="feedback-author">
+                <strong>TransLog Distribuição</strong>
+                <span>Logística &amp; Galpões · Contagem / MG</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Saúde & Clínicas -->
+          <article class="feedback-card">
+            <div class="feedback-top">
+              <div class="feedback-stars" aria-label="Nota 5 de 5 estrelas">
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <span class="feedback-score">5.0</span>
+              </div>
+              <span class="feedback-metric">SUPORTE EM 15 MIN</span>
+            </div>
+            <blockquote class="feedback-quote">
+              “A mudança do telefone para a nuvem e o aluguel de computadores novos acabaram com as ligações perdidas na recepção. O suporte da EGS atende rápido e sem burocracia.”
+            </blockquote>
+            <div class="feedback-company">
+              <div class="company-logo-circle" aria-hidden="true">
+                <span>CM</span>
+              </div>
+              <div class="feedback-author">
+                <strong>Centro Clínico Minas</strong>
+                <span>Saúde &amp; Diagnósticos · Belo Horizonte</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Advocacia / Jurídico -->
+          <article class="feedback-card">
+            <div class="feedback-top">
+              <div class="feedback-stars" aria-label="Nota 5 de 5 estrelas">
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <span class="feedback-score">5.0</span>
+              </div>
+              <span class="feedback-metric">SIGILO LGPD 100%</span>
+            </div>
+            <blockquote class="feedback-quote">
+              “Nossos advogados precisavam acessar os contratos de casa com segurança. A EGS organizou as pastas por setor, blindou o servidor e deixou o acesso remoto super rápido.”
+            </blockquote>
+            <div class="feedback-company">
+              <div class="company-logo-circle" aria-hidden="true">
+                <span>AV</span>
+              </div>
+              <div class="feedback-author">
+                <strong>Andrade &amp; Vasconcelos</strong>
+                <span>Sociedade de Advogados · Savassi / BH</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Engenharia & Metalurgia -->
+          <article class="feedback-card">
+            <div class="feedback-top">
+              <div class="feedback-stars" aria-label="Nota 5 de 5 estrelas">
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <span class="feedback-score">5.0</span>
+              </div>
+              <span class="feedback-metric">BACKUP BLINDADO</span>
+            </div>
+            <blockquote class="feedback-quote">
+              “Já tínhamos perdido arquivos antes de conhecer a EGS. Hoje todo projeto de engenharia é salvo automaticamente na nuvem e recebemos testes mensais de recuperação.”
+            </blockquote>
+            <div class="feedback-company">
+              <div class="company-logo-circle" aria-hidden="true">
+                <span>MV</span>
+              </div>
+              <div class="feedback-author">
+                <strong>Metalúrgica Vale</strong>
+                <span>Indústria &amp; Projetos · Betim / MG</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. Comércio & Varejo -->
+          <article class="feedback-card">
+            <div class="feedback-top">
+              <div class="feedback-stars" aria-label="Nota 5 de 5 estrelas">
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <span class="feedback-score">5.0</span>
+              </div>
+              <span class="feedback-metric">3 FILIAIS INTEGRADAS</span>
+            </div>
+            <blockquote class="feedback-quote">
+              “Interligamos nossas 3 lojas com a matriz em Belo Horizonte. O sistema de caixa não trava mais e falamos entre as unidades sem custo de telefone.”
+            </blockquote>
+            <div class="feedback-company">
+              <div class="company-logo-circle" aria-hidden="true">
+                <span>RH</span>
+              </div>
+              <div class="feedback-author">
+                <strong>Rede Horizonte</strong>
+                <span>Comércio &amp; Varejo · Belo Horizonte</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. Construção Civil & Incorporação -->
+          <article class="feedback-card">
+            <div class="feedback-top">
+              <div class="feedback-stars" aria-label="Nota 5 de 5 estrelas">
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <span class="feedback-score">5.0</span>
+              </div>
+              <span class="feedback-metric">MÁQUINAS ALUGADAS</span>
+            </div>
+            <blockquote class="feedback-quote">
+              “Alugar notebooks e computadores com a EGS foi a melhor decisão financeira: quando abrimos uma nova obra, eles entregam tudo pronto e dão manutenção imediata.”
+            </blockquote>
+            <div class="feedback-company">
+              <div class="company-logo-circle" aria-hidden="true">
+                <span>CA</span>
+              </div>
+              <div class="feedback-author">
+                <strong>Construtora Aliança</strong>
+                <span>Engenharia &amp; Obras · Nova Lima / MG</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. Seguros & Financeiro -->
+          <article class="feedback-card">
+            <div class="feedback-top">
+              <div class="feedback-stars" aria-label="Nota 5 de 5 estrelas">
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <span class="feedback-score">5.0</span>
+              </div>
+              <span class="feedback-metric">ATENDIMENTO VIP</span>
+            </div>
+            <blockquote class="feedback-quote">
+              “Ter uma equipe fixa cuidando de toda a nossa TI por um valor mensal previsível mudou nosso escritório. Qualquer dúvida da equipe eles resolvem em minutos.”
+            </blockquote>
+            <div class="feedback-company">
+              <div class="company-logo-circle" aria-hidden="true">
+                <span>PS</span>
+              </div>
+              <div class="feedback-author">
+                <strong>Prime Corretora</strong>
+                <span>Seguros &amp; Benefícios · Lourdes / BH</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FAQ EXECUTIVO B2B (Animated Accordion)
+         ========================================================================== -->
+    <section id="faq" class="section" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 id="faq-heading">Dúvidas Comuns Antes de Contratar</h2>
+          <p>Respostas diretas e sem termos complicados sobre como funciona nosso trabalho no dia a dia.</p>
+        </div>
+
+        <div class="faq-list reveal reveal-delay-1">
+          <div class="faq-item is-open">
+            <button type="button" class="faq-question" aria-expanded="true" aria-controls="faq-ans-1" id="faq-btn-1">
+              <span>1. A troca da nossa TI atual para a EGS Digital vai parar a empresa?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-ans-1" class="faq-answer-wrap" role="region" aria-labelledby="faq-btn-1">
+              <div class="faq-answer-inner">
+                <p><strong>Não.</strong> Fazemos toda a transição de forma organizada. Primeiro visitamos a empresa e mapeamos todas as senhas, servidores, internet e backups. Qualquer mudança maior é agendada fora do horário de pico, garantindo que sua equipe continue trabalhando normalmente.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-2" id="faq-btn-2">
+              <span>2. Já temos uma pessoa de TI na empresa. A EGS substitui ou trabalha junto?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-ans-2" class="faq-answer-wrap" role="region" aria-labelledby="faq-btn-2">
+              <div class="faq-answer-inner">
+                <p>Trabalhamos dos dois jeitos: podemos <strong>cuidar de 100% da TI</strong> da sua empresa ou <strong>atuar em parceria com o seu profissional interno</strong>. Nesse segundo caso, a EGS assume a parte mais pesada (servidores, segurança, firewall e backup blindado 24h), deixando seu funcionário livre para cuidar das demandas internas do dia a dia.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-3" id="faq-btn-3">
+              <span>3. Se um vírus sequestrar os dados ou o servidor queimar, em quanto tempo voltamos a trabalhar?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-ans-3" class="faq-answer-wrap" role="region" aria-labelledby="faq-btn-3">
+              <div class="faq-answer-inner">
+                <p>Como o nosso <strong>Backup Blindado fica guardado fora da sua empresa</strong> e possui trava contra exclusão, nenhum vírus na sua rede consegue apagar suas cópias. Nossa equipe inicia imediatamente a recuperação dos servidores e sistemas prioritários para sua operação voltar ao ar o mais rápido possível.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-4" id="faq-btn-4">
+              <span>4. Vale mais a pena comprar computadores novos ou alugar com a EGS Digital?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-ans-4" class="faq-answer-wrap" role="region" aria-labelledby="faq-btn-4">
+              <div class="faq-answer-inner">
+                <p>O <strong>aluguel de equipamentos</strong> evita que você tire um valor alto do caixa da empresa de uma só vez. Você paga uma mensalidade fixa, pode abater no imposto de renda (em empresas no Lucro Real) e não se preocupa com manutenção: se um computador der defeito, a EGS conserta ou troca rápido sem custo extra.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-5" id="faq-btn-5">
+              <span>5. Vocês atendem só pela internet ou também vão até a empresa?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-ans-5" class="faq-answer-wrap" role="region" aria-labelledby="faq-btn-5">
+              <div class="faq-answer-inner">
+                <p>Fazemos <strong>atendimento remoto e presencial</strong>. Mais de 90% dos pedidos do dia a dia são resolvidos remotamente em poucos minutos (com primeiro atendimento em até 15 minutos). Quando o problema é físico — em cabos, peças ou servidores — nossa equipe própria em <strong>Belo Horizonte / MG</strong> vai até a sua empresa.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -506,8 +1024,8 @@
       <div class="container">
         <div class="contact-grid">
           <div class="reveal">
-            <h2 id="contato-heading">Agendamento de Consulta Técnica</h2>
-            <p class="contact-lead">Entre em contato com nossa equipe técnica para avaliarmos a infraestrutura da sua empresa e definirmos um plano de governança adaptado às suas necessidades.</p>
+            <h2 id="contato-heading">Fale com um Especialista da EGS</h2>
+            <p class="contact-lead">Conte para nós quantos computadores sua empresa tem ou qual problema você quer resolver. Fazemos um diagnóstico sem compromisso para indicar o melhor caminho.</p>
 
             <div class="contact-meta">
               <div class="contact-meta-item">
@@ -515,7 +1033,7 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </div>
                 <div>
-                  <div class="contact-label">Telefone Comercial</div>
+                  <div class="contact-label">Telefone &amp; WhatsApp Comercial</div>
                   <a href="tel:+553130373451" class="contact-val">(31) 3037-3451</a>
                 </div>
               </div>
@@ -542,24 +1060,19 @@
             </div>
           </div>
 
-          <!-- Formulário -->
+          <!-- Formulário Otimizado (CRO: Apenas 3 campos rápidos obrigatórios) -->
           <form id="lead-form" class="contact-form reveal reveal-delay-2">
-            <h3 class="form-title">Solicitar Avaliação Preliminar</h3>
-            <p class="form-subtitle">Preencha os campos abaixo para que nossa equipe técnica analise suas demandas.</p>
+            <h3 class="form-title">Solicitar Orçamento ou Visita Técnica</h3>
+            <p class="form-subtitle">Preencha seus dados básicos abaixo e retornamos rapidamente pelo WhatsApp ou telefone.</p>
 
             <div class="form-group">
-              <label for="form-name">Nome Completo <span class="label-req" aria-hidden="true">*</span></label>
+              <label for="form-name">Seu Nome <span class="label-req" aria-hidden="true">*</span></label>
               <input type="text" id="form-name" name="name" autocomplete="name" class="form-control" placeholder="Ex: Carlos Mendes" required>
             </div>
 
             <div class="form-group">
-              <label for="form-company">Empresa <span class="label-req" aria-hidden="true">*</span></label>
-              <input type="text" id="form-company" name="organization" autocomplete="organization" class="form-control" placeholder="Razão social ou nome fantasia" required>
-            </div>
-
-            <div class="form-group">
-              <label for="form-email">E-mail Corporativo <span class="label-req" aria-hidden="true">*</span></label>
-              <input type="email" id="form-email" name="email" autocomplete="email" class="form-control" placeholder="nome@empresa.com.br" required>
+              <label for="form-company">Nome da Empresa <span class="label-req" aria-hidden="true">*</span></label>
+              <input type="text" id="form-company" name="organization" autocomplete="organization" class="form-control" placeholder="Nome da sua empresa" required>
             </div>
 
             <div class="form-group">
@@ -568,18 +1081,69 @@
             </div>
 
             <div class="form-group">
-              <label for="form-message">Cenário atual da infraestrutura <span class="label-opt">(opcional)</span></label>
-              <textarea id="form-message" name="message" class="form-control" rows="3" placeholder="Ex: 25 computadores, 1 servidor local e necessidade de backup imutável..."></textarea>
+              <label for="form-email">E-mail Corporativo <span class="label-opt">(opcional)</span></label>
+              <input type="email" id="form-email" name="email" autocomplete="email" class="form-control" placeholder="nome@empresa.com.br">
+            </div>
+
+            <div class="form-group">
+              <label for="form-message">O que você precisa resolver hoje? <span class="label-opt">(opcional)</span></label>
+              <textarea id="form-message" name="message" class="form-control" rows="3" placeholder="Ex: Temos 20 computadores e precisamos de suporte rápido, organizar o servidor ou fazer backup..."></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary btn-submit-full">
-              Enviar Dados para Avaliação
+              Receber Contato da Equipe EGS <span class="arrow-shift" aria-hidden="true">→</span>
             </button>
           </form>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- ==========================================================================
+       MODAL ANIMADO DE FICHA TÉCNICA (Deep-Dive 6 Soluções)
+       ========================================================================== -->
+  <div id="spec-modal" class="spec-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="spec-modal-title" aria-hidden="true">
+    <div class="spec-modal-dialog">
+      <div class="spec-modal-header">
+        <div>
+          <span id="spec-modal-code" class="spec-modal-code">DETALHES DO SERVIÇO · EGS-MSP</span>
+          <h3 id="spec-modal-title" class="spec-modal-title">Suporte de TI Completo (HelpDesk)</h3>
+        </div>
+        <button type="button" id="spec-modal-close" class="spec-modal-close" aria-label="Fechar detalhes do serviço">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <p id="spec-modal-summary" class="spec-modal-summary"></p>
+
+      <div class="spec-modal-metrics">
+        <div class="spec-metric-item">
+          <span class="spec-metric-label">TEMPO DE ATENDIMENTO</span>
+          <strong id="spec-modal-sla">Até 15 minutos</strong>
+        </div>
+        <div class="spec-metric-item">
+          <span class="spec-metric-label">COMO CONTRATAR</span>
+          <strong id="spec-modal-model">Mensalidade Fixa</strong>
+        </div>
+        <div class="spec-metric-item">
+          <span class="spec-metric-label">GARANTIA E SEGURANÇA</span>
+          <strong id="spec-modal-stack">Monitoramento 24h</strong>
+        </div>
+      </div>
+
+      <div class="spec-modal-section">
+        <h4 class="spec-section-title">O Que Está Incluso na Prática</h4>
+        <ul id="spec-modal-deliverables" class="spec-modal-list"></ul>
+      </div>
+
+      <div class="spec-modal-footer">
+        <button type="button" id="spec-modal-cancel" class="btn btn-secondary">Fechar</button>
+        <a id="spec-modal-cta" href="https://wa.me/553130373451" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          Pedir Orçamento deste Serviço <span class="arrow-shift" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- ==========================================================================
        FOOTER (x.ai Minimal Clean Architecture)
@@ -605,24 +1169,24 @@
           <h3>Navegação</h3>
           <div class="footer-links">
             <a href="#inicio">Página Inicial</a>
-            <a href="#solucoes">Soluções Corporativas</a>
-            <a href="#metodologia">Metodologia</a>
-            <a href="#simulador">Diagnóstico Técnico</a>
-            <a href="#seguranca">Segurança &amp; Backup</a>
-            <a href="#quemsomos">Sobre a Empresa</a>
-            <a href="#contato">Contato Comercial</a>
+            <a href="#solucoes">O Que Resolvemos</a>
+            <a href="#metodologia">Como Funciona</a>
+            <a href="#simulador">Simulador de Plano</a>
+            <a href="#seguranca">Proteção de Dados</a>
+            <a href="#clientes">Resultados em Clientes</a>
+            <a href="#faq">Dúvidas Comuns</a>
           </div>
         </div>
 
         <div class="footer-col">
-          <h3>Serviços</h3>
+          <h3>Nossos Serviços</h3>
           <div class="footer-links">
-            <a href="#solucoes">Suporte Gerenciado (MSP)</a>
-            <a href="#solucoes">Servidores &amp; Nuvem</a>
-            <a href="#solucoes">Backup Imutável</a>
-            <a href="#solucoes">Redes e Conectividade</a>
-            <a href="#solucoes">Telefonia WideCloud</a>
-            <a href="#solucoes">Locação de Hardware</a>
+            <a href="#solucoes" data-spec="msp">Suporte de TI Completo</a>
+            <a href="#solucoes" data-spec="cloud">Servidores Locais e Nuvem</a>
+            <a href="#solucoes" data-spec="backup">Backup Blindado em Nuvem</a>
+            <a href="#solucoes" data-spec="redes">Redes, Wi-Fi e Firewall</a>
+            <a href="#solucoes" data-spec="voip">Telefonia Digital (PABX)</a>
+            <a href="#solucoes" data-spec="haas">Aluguel de Computadores</a>
           </div>
         </div>
 
@@ -643,8 +1207,49 @@
     </div>
   </footer>
 
+  <!-- Vertical Section Dots Indicator (ScrollSpy) -->
+  <nav class="section-dots-nav" aria-label="Indicador de seções da página">
+    <span class="section-dots-indicator" aria-hidden="true"></span>
+    <a href="#inicio" class="section-dot is-active" data-section-spy="inicio" aria-label="Início" aria-current="location">
+      <span class="section-dot-pip" aria-hidden="true"></span>
+      <span class="section-dot-label" aria-hidden="true">Início</span>
+    </a>
+    <a href="#solucoes" class="section-dot" data-section-spy="solucoes" aria-label="O Que Resolvemos">
+      <span class="section-dot-pip" aria-hidden="true"></span>
+      <span class="section-dot-label" aria-hidden="true">Soluções</span>
+    </a>
+    <a href="#metodologia" class="section-dot" data-section-spy="metodologia" aria-label="Como Funciona">
+      <span class="section-dot-pip" aria-hidden="true"></span>
+      <span class="section-dot-label" aria-hidden="true">Como Funciona</span>
+    </a>
+    <a href="#simulador" class="section-dot" data-section-spy="simulador" aria-label="Simulador de Plano">
+      <span class="section-dot-pip" aria-hidden="true"></span>
+      <span class="section-dot-label" aria-hidden="true">Simulador</span>
+    </a>
+    <a href="#seguranca" class="section-dot" data-section-spy="seguranca" aria-label="Proteção de Dados">
+      <span class="section-dot-pip" aria-hidden="true"></span>
+      <span class="section-dot-label" aria-hidden="true">Segurança</span>
+    </a>
+    <a href="#quemsomos" class="section-dot" data-section-spy="quemsomos" aria-label="Sobre a EGS Digital">
+      <span class="section-dot-pip" aria-hidden="true"></span>
+      <span class="section-dot-label" aria-hidden="true">A Empresa</span>
+    </a>
+    <a href="#clientes" class="section-dot" data-section-spy="clientes" aria-label="Resultados em Clientes">
+      <span class="section-dot-pip" aria-hidden="true"></span>
+      <span class="section-dot-label" aria-hidden="true">Clientes</span>
+    </a>
+    <a href="#faq" class="section-dot" data-section-spy="faq" aria-label="Dúvidas Comuns">
+      <span class="section-dot-pip" aria-hidden="true"></span>
+      <span class="section-dot-label" aria-hidden="true">Dúvidas</span>
+    </a>
+    <a href="#contato" class="section-dot" data-section-spy="contato" aria-label="Fale com um Especialista">
+      <span class="section-dot-pip" aria-hidden="true"></span>
+      <span class="section-dot-label" aria-hidden="true">Contato</span>
+    </a>
+  </nav>
+
   <!-- WhatsApp Floating Action -->
-  <a href="https://wa.me/553130373451?text=Olá!%20Gostaria%20de%20solicitar%20uma%20avaliação%20técnica%20de%20TI." target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Falar com a EGS Digital no WhatsApp">
+  <a href="https://wa.me/553130373451?text=Olá!%20Gostaria%20de%20solicitar%20uma%20avaliação%20técnica%20de%0ATI." target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Falar com a EGS Digital no WhatsApp">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
   </a>
 
